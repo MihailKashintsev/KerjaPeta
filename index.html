@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KerjaPeta — геосервис для поиска работы</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-title">
+    <span class="logo-dot"></span>
+    <div>
+      <h1>KerjaPeta</h1>
+      <p>Геосервис для поиска работы в промышленном поясе Джакарта — Бекаси — Караванг — Чикаранг</p>
+    </div>
+  </div>
+</header>
+
+<div class="app">
+  <aside class="sidebar">
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="search">Поиск работы</button>
+      <button class="tab-btn" data-tab="layers">Слои карты</button>
+      <button class="tab-btn" data-tab="about">О проекте</button>
+    </nav>
+
+    <section class="tab-panel active" id="tab-search">
+      <p class="hint">Кликните по карте, чтобы отметить место проживания <span id="home-status" class="home-status">— место не указано</span></p>
+
+      <form id="search-form">
+        <label for="industry-select">Отрасль</label>
+        <select id="industry-select">
+          <option value="all">Любая отрасль</option>
+        </select>
+
+        <label for="skill-select">Ваша квалификация</label>
+        <select id="skill-select"></select>
+
+        <button type="submit" class="btn-primary">Найти вакансии</button>
+      </form>
+
+      <div id="results" class="results"></div>
+
+      <button id="show-courses-btn" class="btn-secondary">Показать ближайшие курсы переподготовки</button>
+      <div id="courses-results" class="results"></div>
+    </section>
+
+    <section class="tab-panel" id="tab-layers">
+      <p class="hint">Включайте и выключайте слои карты</p>
+      <label class="layer-toggle"><input type="checkbox" id="layer-factories" checked> Заводы и вакансии</label>
+      <label class="layer-toggle"><input type="checkbox" id="layer-transport" checked> Транспорт (KRL Cikarang Line)</label>
+      <label class="layer-toggle"><input type="checkbox" id="layer-housing"> Жильё рядом с заводами</label>
+      <label class="layer-toggle"><input type="checkbox" id="layer-courses"> Курсы переподготовки</label>
+
+      <div class="legend">
+        <h3>Отрасли</h3>
+        <div id="industry-legend"></div>
+        <h3>Жильё</h3>
+        <div class="legend-row"><span class="legend-dot" style="background:#2F7D46"></span> доступно и безопасно</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#B8860B"></span> средний вариант</div>
+        <div class="legend-row"><span class="legend-dot" style="background:#B23A3A"></span> дорого или небезопасно</div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="tab-about">
+      <h3>О проекте</h3>
+      <p>KerjaPeta — учебный проект по географии (техническое направление). Идея сервиса: помочь молодым соискателям работы, приезжающим из сельских районов Явы и других островов Индонезии, найти подходящую вакансию на заводах промышленного пояса Джакарта–Бекаси–Караванг–Чикаранг, проложить маршрут на работу, подобрать жильё рядом и, при нехватке квалификации, найти курсы переподготовки.</p>
+      <p class="disclaimer"><strong>Важно:</strong> расположение промышленных парков и линии пригородной электрички KRL Cikarang Line приближено к реальной географии. Конкретные вакансии, зарплаты, варианты жилья и курсы — иллюстративные примеры для демонстрации идеи, а не реальные актуальные данные. Расчёт времени и стоимости поездки — приблизительная оценка.</p>
+    </section>
+  </aside>
+
+  <main id="map"></main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
